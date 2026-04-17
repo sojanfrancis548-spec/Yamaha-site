@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login — Yamaha</title>
+  <script>
+  function togglePassword() {
+    const input = document.getElementById('password');
+    const icon  = document.getElementById('eye-icon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.textContent = '🙈';
+    } else {
+      input.type = 'password';
+      icon.textContent = '👁️';
+    }
+  }
+</script>
+  <style>
+    
+    body {
+      font-family: sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: #0f1420;
+      border: 1px solid #1b2330;
+      border-radius: 12px;
+      padding: 32px;
+      width: 320px;
+    }
+    h2 { margin: 0 0 20px; font-size: 20px; }
+    label { font-size: 13px; color: #9aa7b0; display: block; margin-bottom: 6px; }
+    input {
+      width: 100%;
+      padding: 10px;
+      background: #0b121c;
+      border: 1px solid #1b2330;
+      border-radius: 8px;
+      color: #e6edf3;
+      margin-bottom: 14px;
+      box-sizing: border-box;
+    }
+    input:focus { border-color: #1e6ae3; outline: none; }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(135deg, #1e6ae3, #5aa1ff);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.9; }
+    .error { color: #ff6b6b; margin-bottom: 12px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>🔒 Admin Login</h2>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Enter username" required autofocus />
+      <label>Password</label>
+      <div style="position: relative;">
+    <input type="password" name="password" id="password" placeholder="Enter password" required style="padding-right: 40px;" />
+    <span onclick="togglePassword()" id="eye-icon"
+    style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:16px; user-select:none;">
+    👁️
+  </span>
+</div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>
